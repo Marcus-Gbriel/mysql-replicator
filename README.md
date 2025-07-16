@@ -15,34 +15,34 @@ Um sistema completo e profissional para replicar estruturas e dados entre bancos
 
 ```
 replicator/
-├── src/                          # Código fonte organizado
+├── src/                            # Código fonte organizado
 │   ├── __init__.py
-│   ├── core/                     # Funcionalidades principais
+│   ├── core/                       # Funcionalidades principais
 │   │   ├── __init__.py
-│   │   └── replicator.py        # Lógica principal de replicação
-│   ├── managers/                 # Gerenciadores do sistema
+│   │   └── replicator.py           # Lógica principal de replicação
+│   ├── managers/                   # Gerenciadores do sistema
 │   │   ├── __init__.py
-│   │   ├── backup_manager.py    # Gerenciamento de backups
-│   │   ├── config_manager.py    # Gerenciamento de configurações
-│   │   ├── database_manager.py  # Gerenciamento de conexões de banco
-│   │   └── structure_analyzer.py # Análise de diferenças estruturais
-│   ├── utils/                    # Utilitários e ferramentas
+│   │   ├── backup_manager.py       # Gerenciamento de backups
+│   │   ├── config_manager.py       # Gerenciamento de configurações
+│   │   ├── database_manager.py     # Gerenciamento de conexões de banco
+│   │   └── structure_analyzer.py   # Análise de diferenças estruturais
+│   ├── utils/                      # Utilitários e ferramentas
 │   │   ├── __init__.py
-│   │   └── logger.py            # Sistema de logging
-│   └── interface/                # Interfaces de usuário
+│   │   └── logger.py               # Sistema de logging
+│   └── interface/                  # Interfaces de usuário
 │       ├── __init__.py
-│       └── cli_interface.py     # Interface de linha de comando
-├── main.py                       # Ponto de entrada principal
-├── config.json                   # Configuração principal (não versionado)
-├── config_example.json          # Exemplo de configuração
-├── requirements.txt              # Dependências Python
-├── .gitignore                    # Arquivos ignorados pelo Git
-├── README.md                     # Esta documentação
-├── PROJECT_STRUCTURE.md         # Estrutura detalhada do projeto
-├── REPLICATION_GUIDE.md         # Guia de uso da replicação
-├── TECHNICAL_DOCS.md            # Documentação técnica
-├── backups/                      # Backups criados pelo sistema
-└── logs/                         # Logs de execução
+│       └── cli_interface.py        # Interface de linha de comando
+├── main.py                         # Ponto de entrada principal
+├── config.json                     # Configuração principal (não versionado)
+├── config_example.json             # Exemplo de configuração
+├── requirements.txt                # Dependências Python
+├── .gitignore                      # Arquivos ignorados pelo Git
+├── README.md                       # Esta documentação
+├── PROJECT_STRUCTURE.md            # Estrutura detalhada do projeto
+├── REPLICATION_GUIDE.md            # Guia de uso da replicação
+├── TECHNICAL_DOCS.md               # Documentação técnica
+├── backups/                        # Backups criados pelo sistema
+└── logs/                           # Logs de execução
 ```
 
 ## 🔧 Instalação
