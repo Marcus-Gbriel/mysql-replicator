@@ -3,12 +3,12 @@ import json
 from typing import List, Dict, Any
 from colorama import Fore, Style
 from tabulate import tabulate
-from config_manager import ConfigManager
-from database_manager import DatabaseManager
-from structure_analyzer import StructureAnalyzer
-from backup_manager import BackupManager
-from replicator import Replicator
-from logger import Logger
+from ..managers.config_manager import ConfigManager
+from ..managers.database_manager import DatabaseManager
+from ..managers.structure_analyzer import StructureAnalyzer
+from ..managers.backup_manager import BackupManager
+from ..core.replicator import Replicator
+from ..utils.logger import Logger
 
 class CLIInterface:
     def __init__(self):

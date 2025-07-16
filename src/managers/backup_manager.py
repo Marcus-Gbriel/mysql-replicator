@@ -2,8 +2,8 @@ import os
 import shutil
 from datetime import datetime
 from typing import List, Dict, Any
-from database_manager import DatabaseManager
-from logger import Logger
+from .database_manager import DatabaseManager
+from ..utils.logger import Logger
 
 class BackupManager:
     def __init__(self, logger: Logger):

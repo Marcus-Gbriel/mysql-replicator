@@ -10,7 +10,7 @@ mantendo sincronização entre ambientes de desenvolvimento e produção.
 
 import sys
 import os
-from cli_interface import CLIInterface
+from src.interface.cli_interface import CLIInterface
 
 def main():
     """Função principal do sistema"""

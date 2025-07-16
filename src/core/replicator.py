@@ -1,8 +1,8 @@
 from typing import List, Dict, Any
-from database_manager import DatabaseManager
-from structure_analyzer import StructureAnalyzer
-from backup_manager import BackupManager
-from logger import Logger
+from ..managers.database_manager import DatabaseManager
+from ..managers.structure_analyzer import StructureAnalyzer
+from ..managers.backup_manager import BackupManager
+from ..utils.logger import Logger
 
 class Replicator:
     def __init__(self, source_db: DatabaseManager, target_db: DatabaseManager, 

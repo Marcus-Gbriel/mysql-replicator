@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 from typing import Dict, List, Optional, Tuple, Any
 from contextlib import contextmanager
-from logger import Logger
+from ..utils.logger import Logger
 
 class DatabaseManager:
     def __init__(self, config: Dict[str, str], logger: Logger):

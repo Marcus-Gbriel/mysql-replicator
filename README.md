@@ -1,65 +1,102 @@
 # Sistema de Replicação de Banco de Dados MySQL
 
-Sistema completo para replicação de estrutura e dados entre bancos de dados MySQL, desenvolvido especificamente para sincronização entre ambientes de desenvolvimento (homologação) e produção.
+Um sistema completo e profissional para replicar estruturas e dados entre bancos de dados MySQL, ideal para sincronização entre ambientes de desenvolvimento e produção.
 
-## Características
+## 🚀 Características
 
-- **Replicação Completa**: Replica estrutura de tabelas, índices, chaves estrangeiras e dados
-- **Análise de Diferenças**: Compara estruturas entre bancos e identifica diferenças
-- **Backup Automático**: Cria backups antes de realizar modificações
-- **Interface CLI**: Interface de linha de comando amigável
-- **Logs Detalhados**: Sistema de logging completo
-- **Configuração Flexível**: Gerenciamento de configurações via arquivo JSON
+- **Replicação Inteligente**: Analisa diferenças estruturais e replica apenas o necessário
+- **Backups Automáticos**: Cria backups automáticos antes de modificações críticas
+- **Interface CLI Intuitiva**: Interface de linha de comando fácil de usar
+- **Configuração Flexível**: Suporte a múltiplos ambientes e configurações personalizadas
+- **Logs Detalhados**: Sistema de logging completo para auditoria e depuração
+- **Gerenciamento de Dependências**: Resolve automaticamente dependências entre tabelas
 
-## Instalação
+## 📁 Estrutura do Projeto
 
-1. **Pré-requisitos**:
-   - Python 3.7+
-   - MySQL Server
-   - Acesso aos bancos de dados de origem e destino
+```
+replicator/
+├── src/                          # Código fonte organizado
+│   ├── __init__.py
+│   ├── core/                     # Funcionalidades principais
+│   │   ├── __init__.py
+│   │   └── replicator.py        # Lógica principal de replicação
+│   ├── managers/                 # Gerenciadores do sistema
+│   │   ├── __init__.py
+│   │   ├── backup_manager.py    # Gerenciamento de backups
+│   │   ├── config_manager.py    # Gerenciamento de configurações
+│   │   ├── database_manager.py  # Gerenciamento de conexões de banco
+│   │   └── structure_analyzer.py # Análise de diferenças estruturais
+│   ├── utils/                    # Utilitários e ferramentas
+│   │   ├── __init__.py
+│   │   └── logger.py            # Sistema de logging
+│   └── interface/                # Interfaces de usuário
+│       ├── __init__.py
+│       └── cli_interface.py     # Interface de linha de comando
+├── main.py                       # Ponto de entrada principal
+├── config.json                   # Configuração principal (não versionado)
+├── config_example.json          # Exemplo de configuração
+├── requirements.txt              # Dependências Python
+├── .gitignore                    # Arquivos ignorados pelo Git
+├── README.md                     # Esta documentação
+├── PROJECT_STRUCTURE.md         # Estrutura detalhada do projeto
+├── REPLICATION_GUIDE.md         # Guia de uso da replicação
+├── TECHNICAL_DOCS.md            # Documentação técnica
+├── backups/                      # Backups criados pelo sistema
+└── logs/                         # Logs de execução
+```
 
-2. **Instalação de dependências**:
+## 🔧 Instalação
+
+1. **Clone o repositório**:
+
+   ```bash
+   git clone <url-do-repositório>
+   cd replicator
+   ```
+
+2. **Instale as dependências**:
+
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configuração**:
-   - Edite o arquivo `config.json` com suas configurações de banco de dados
-   - Configure as tabelas que devem ser mantidas na seção `maintain`
+3. **Configure o sistema**:
 
-## Configuração
+   ```bash
+   cp config_example.json config.json
+   # Edite config.json com suas configurações de banco
+   ```
 
-O arquivo `config.json` deve conter:
+## ⚙️ Configuração
+
+Edite o arquivo `config.json` com suas configurações:
 
 ```json
 {
-    "version": "1.0",
-    "settings": {},
-    "database": {
-        "production": {
-            "server": "servidor-producao",
-            "database": "banco_producao",
-            "user": "usuario",
-            "password": "senha"
-        },
-        "development": {
-            "server": "servidor-desenvolvimento",
-            "database": "banco_desenvolvimento",
-            "user": "usuario",
-            "password": "senha"
-        },
-        "maintain": [
-            "tabela1",
-            "tabela2",
-            "tabela3"
-        ]
-    }
+  "database": {
+    "development": {
+      "server": "localhost",
+      "database": "db_desenvolvimento",
+      "user": "usuario_dev",
+      "password": "senha_dev"
+    },
+    "production": {
+      "server": "servidor_producao",
+      "database": "db_producao",
+      "user": "usuario_prod",
+      "password": "senha_prod"
+    },
+    "maintain": [
+      "tabela_importante",
+      "tabela_dados_criticos"
+    ]
+  }
 }
 ```
 
-## Uso
+## 🚀 Uso
 
-Execute o sistema com:
+### Execução Principal
 
 ```bash
 python main.py
@@ -67,107 +104,112 @@ python main.py
 
 ### Menu Principal
 
-1. **Analisar Replicação**: Analisa diferenças entre bancos e oferece opção de replicação
-2. **Backups**: Gerencia backups do sistema
-3. **Replicação**: Executa replicação completa
-4. **Configuração**: Gerencia configurações do sistema
-5. **Testar Conexões**: Testa conectividade com os bancos
+O sistema oferece um menu interativo com as seguintes opções:
 
-### Funcionalidades Detalhadas
+1. **Analisar Replicação** - Analisa diferenças entre os bancos
+2. **Backups** - Gerencia backups do sistema
+3. **Replicação** - Executa replicação completa
+4. **Configuração** - Gerencia configurações do sistema
+5. **Testar Conexões** - Testa conectividade com os bancos
 
-#### 1. Análise de Replicação
-- Compara estruturas de tabelas entre origem e destino
-- Identifica diferenças em colunas, tipos, chaves estrangeiras e índices
-- Mostra contagem de registros em cada tabela
-- Oferece opção de replicação após análise
+### Tipos de Replicação
 
-#### 2. Backups
-- **Listar Backups**: Mostra todos os backups disponíveis
-- **Criar Backup**: Cria backup de ambiente específico
-- **Remover Backup**: Remove backup selecionado
-- **Limpar Backups Antigos**: Mantém apenas os backups mais recentes
+- **Estrutura**: Replica apenas a estrutura das tabelas (DDL)
+- **Dados**: Replica dados das tabelas configuradas em "maintain"
+- **Completa**: Replica estrutura de todas as tabelas + dados das tabelas "maintain"
 
-#### 3. Replicação
-- Replicação completa de estrutura e dados
-- Backup automático antes da replicação
-- Replicação apenas das tabelas configuradas em `maintain`
-- Garante ordem idêntica das colunas
+## 📊 Funcionalidades Detalhadas
 
-#### 4. Configuração
-- **Configurar Banco de Dados**: Edita configurações de conexão
-- **Gerenciar Tabelas de Manutenção**: Adiciona/remove tabelas da lista `maintain`
-- **Visualizar Configuração**: Mostra configuração atual
+### 🔍 Análise de Diferenças
 
-## Estrutura do Projeto
+- Compara estruturas de tabelas
+- Identifica diferenças em colunas, índices e chaves estrangeiras
+- Gera plano de replicação otimizado
+- Resolve dependências entre tabelas
 
-```
-replicator/
-├── main.py                 # Arquivo principal
-├── cli_interface.py        # Interface CLI
-├── config_manager.py       # Gerenciador de configurações
-├── database_manager.py     # Gerenciador de banco de dados
-├── structure_analyzer.py   # Analisador de estruturas
-├── replicator.py          # Lógica de replicação
-├── backup_manager.py      # Gerenciador de backups
-├── logger.py              # Sistema de logging
-├── config.json            # Configurações
-├── requirements.txt       # Dependências
-└── README.md             # Documentação
-```
+### 💾 Sistema de Backup
 
-## Funcionalidades Técnicas
-
-### Replicação de Estrutura
-- Cria tabelas inexistentes no destino
-- Adiciona/remove colunas conforme necessário
-- Modifica tipos de dados
-- Ajusta ordem das colunas (recria tabela se necessário)
-- Gerencia chaves estrangeiras
-- Sincroniza índices
-
-### Replicação de Dados
-- Trunca tabelas no destino antes da cópia
-- Copia todos os dados das tabelas em `maintain`
-- Inserção em lotes para melhor performance
-- Tratamento de caracteres especiais
-
-### Sistema de Backup
-- Backup de estrutura (CREATE TABLE)
-- Backup de dados (INSERT statements)
-- Metadados do backup
+- Backup automático antes de modificações
+- Suporte a backup completo ou por tabelas específicas
+- Armazenamento organizado por data/hora
 - Limpeza automática de backups antigos
 
-### Logging
-- Logs coloridos no console
-- Logs detalhados em arquivo
-- Diferentes níveis de log (INFO, WARNING, ERROR, CRITICAL)
-- Timestamps automáticos
+### 🔧 Gerenciamento de Configuração
 
-## Segurança
-
-- Backups automáticos antes de modificações
-- Transações para operações críticas
-- Verificação de conexões antes de operações
-- Confirmação para operações destrutivas
-
-## Tratamento de Erros
-
-- Verificação de conectividade
-- Rollback em caso de erro
-- Logs detalhados de erros
+- Múltiplos ambientes (desenvolvimento, produção, etc.)
+- Configuração de tabelas para manutenção de dados
+- Interface para edição de configurações
 - Validação de configurações
 
-## Limitações
+## 🛠️ Arquitetura
 
-- Suporte apenas para MySQL
-- Não há opção de restaurar backups automaticamente
-- Replicação sempre da development para production
-- Tabelas devem existir na origem para serem replicadas
+### Padrões Utilizados
 
-## Suporte
+- **Separation of Concerns**: Cada módulo tem responsabilidade específica
+- **Dependency Injection**: Dependências injetadas via construtores
+- **Context Managers**: Gerenciamento automático de recursos
+- **Error Handling**: Tratamento robusto de erros
 
-Para problemas ou dúvidas, verifique os logs gerados na pasta `logs/` ou consulte a documentação do código.
+### Principais Classes
 
-## Licença
+- **Replicator**: Lógica principal de replicação
+- **DatabaseManager**: Gerenciamento de conexões e operações de banco
+- **StructureAnalyzer**: Análise de diferenças estruturais
+- **BackupManager**: Gerenciamento de backups
+- **ConfigManager**: Gerenciamento de configurações
+- **Logger**: Sistema de logging
+- **CLIInterface**: Interface de linha de comando
 
-Sistema desenvolvido para uso interno.
+## 🔒 Segurança
+
+- Backups automáticos antes de modificações
+- Validação de configurações
+- Logs detalhados para auditoria
+- Tratamento de transações para consistência
+
+## 🐛 Resolução de Problemas
+
+### Problemas Comuns
+
+1. **Erro de Conexão**: Verifique as configurações de banco em `config.json`
+2. **Erro de Permissão**: Certifique-se de que o usuário tem permissões adequadas
+3. **Erro de Dependência**: O sistema resolve automaticamente dependências entre tabelas
+
+### Logs
+
+Os logs são salvos em `logs/` e contêm informações detalhadas sobre:
+
+- Operações realizadas
+- Erros encontrados
+- Estatísticas de replicação
+- Tempos de execução
+
+## 📈 Melhorias Futuras
+
+- [ ] Interface web
+- [ ] Suporte a outros SGBDs
+- [ ] Replicação incremental
+- [ ] Notificações por email
+- [ ] Métricas de performance
+- [ ] Configuração via linha de comando
+
+## 🤝 Contribuição
+
+Para contribuir com o projeto:
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature
+3. Faça commit das suas alterações
+4. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+
+## 📞 Suporte
+
+Para suporte técnico ou dúvidas:
+
+- Abra uma issue no GitHub
+- Consulte a documentação técnica em `TECHNICAL_DOCS.md`
+- Veja o guia de replicação em `REPLICATION_GUIDE.md`

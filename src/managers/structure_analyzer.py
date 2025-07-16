@@ -1,6 +1,6 @@
 from typing import Dict, List, Any, Tuple
-from database_manager import DatabaseManager
-from logger import Logger
+from .database_manager import DatabaseManager
+from ..utils.logger import Logger
 
 class StructureAnalyzer:
     def __init__(self, source_db: DatabaseManager, target_db: DatabaseManager, logger: Logger):
