@@ -1,0 +1,58 @@
+# Arquivos Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Arquivos de teste
+test_*.py
+validate_*.py
+check_*.py
+debug_*.py
+
+# Logs antigos (manter apenas os 3 mais recentes)
+logs/replicator_*.log
+
+# Arquivos de configuração sensíveis
+config.json
+
+# Arquivos temporários
+*.tmp
+*.temp
+*_temp.py
+*_backup.py
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Arquivos batch temporários
+*.bat
+!setup.bat
+
+# Backups temporários
+backups/backup_*_temp/

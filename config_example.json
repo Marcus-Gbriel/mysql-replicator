@@ -1,0 +1,32 @@
+{
+    "version": "1.0",
+    "settings": {
+        "backup_retention_days": 30,
+        "max_backups": 50,
+        "batch_size": 1000,
+        "log_level": "INFO"
+    },
+    "database": {
+        "production": {
+            "server": "banco_de_dados",
+            "database": "tabela_do_banco",
+            "user": "usuario",
+            "password": "senha",
+            "port": 3306,
+            "charset": "utf8mb4"
+        },
+        "development": {
+            "server": "banco_de_dados",
+            "database": "tabela_do_banco",
+            "user": "usuario",
+            "password": "senha",
+            "port": 3306,
+            "charset": "utf8mb4"
+        },
+        "maintain": [
+            "tabela1",
+            "tabela2",
+            "tabela3"
+        ]
+    }
+}
